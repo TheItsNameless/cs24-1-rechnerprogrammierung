@@ -24,6 +24,9 @@ public class TaschenrechnerHilfe {
         System.out.println("Bitte gib eine Rechenoperation ein (+, -, *, /, ^, =: ");
         String operation = scanner.next();
 
+        // Erstelle eine Rechnung
+        Rechnung rechnung = new Rechnung(zahl1, zahl2, operation);
+
         // Einfache Ausgabe
         // System.out.println("Du möchtest berechnen: " + zahl1 + " " + operation + " " + zahl2);
 
@@ -35,31 +38,31 @@ public class TaschenrechnerHilfe {
 
         for (int i = 0; i < basisoperationen.length; i++) {
             if (operation.equals(basisoperationen[i])) {
-                System.out.println("Das Ergebnis der Berechnung ist: " + berechnen(zahl1, zahl2, operation));
+                System.out.println("Das Ergebnis der Berechnung ist: " + berechnen(rechnung));
                 habeBerechnet = true;
             }
         }
 
         if (!habeBerechnet) {
-            System.out.println("Das Ergebnis des Vergleiches ist: " + zahl1 + " " + vergleichen(zahl1, zahl2) + " " + zahl2);
+            System.out.println("Das Ergebnis des Vergleiches ist: " + zahl1 + " " + vergleichen(rechnung) + " " + zahl2);
         }
     }
 
-    public static double berechnen(double zahl1, double zahl2, String operation) {
+    public static double berechnen(Rechnung rechnung) {
         double ergebnis;
 
-        switch (operation) {
+        switch (rechnung.getOperation()) {
             case "+":
-                ergebnis = zahl1 + zahl2;
+                ergebnis = rechnung.getZahl1() + rechnung.getZahl2();
                 break;
             case "-":
-                ergebnis = zahl1 - zahl2;
+                ergebnis = rechnung.getZahl1() - rechnung.getZahl2();
                 break;
             case "*":
-                ergebnis = zahl1 * zahl2;
+                ergebnis = rechnung.getZahl1() * rechnung.getZahl2();
                 break;
             case "/":
-                ergebnis = zahl1 / zahl2;
+                ergebnis = rechnung.getZahl1() / rechnung.getZahl2();
                 break;
             default:
                 ergebnis = 0;
@@ -81,10 +84,10 @@ public class TaschenrechnerHilfe {
 //        };
 //    }
 
-    public static String vergleichen(double zahl1, double zahl2) {
-        if (zahl1 == zahl2) {
+    public static String vergleichen(Rechnung rechnung) {
+        if (rechnung.getZahl1() == rechnung.getZahl2()) {
             return "ist gleich groß wie";
-        } else if (zahl1 > zahl2) {
+        } else if (rechnung.getZahl1() > rechnung.getZahl2()) {
             return "ist größer als";
         } else {
             return "ist kleiner als";
