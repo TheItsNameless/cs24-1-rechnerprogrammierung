@@ -48,11 +48,49 @@ public class Taschenrechner {
     }
 
     public static double berechnen(double zahl1, double zahl2, String operation) {
-        return 0.0;
+        double ergebnis;
+
+        switch (operation) {
+            case "+":
+                ergebnis = zahl1 + zahl2;
+                break;
+            case "-":
+                ergebnis = zahl1 - zahl2;
+                break;
+            case "*":
+                ergebnis = zahl1 * zahl2;
+                break;
+            case "/":
+                ergebnis = zahl1 / zahl2;
+                break;
+            default:
+                ergebnis = 0;
+                break;
+        }
+
+        return ergebnis;
     }
 
+
+//    mit neuem Switch-Statement
+//    public static double berechnen(double zahl1, double zahl2, String operation){
+//        return switch (operation){
+//            case "+" -> zahl1 + zahl2;
+//            case "-" -> zahl1 - zahl2;
+//            case "*" -> zahl1 * zahl2;
+//            case "/" -> zahl1 / zahl2;
+//            default -> 0;
+//        };
+//    }
+
     public static String vergleichen(double zahl1, double zahl2) {
-        return "";
+        if (zahl1 == zahl2) {
+            return "ist gleich groß wie";
+        } else if (zahl1 > zahl2) {
+            return "ist größer als";
+        } else {
+            return "ist kleiner als";
+        }
     }
 
     public static int alsInt(double zahl) {
