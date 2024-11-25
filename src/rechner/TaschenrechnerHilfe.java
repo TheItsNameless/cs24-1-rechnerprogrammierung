@@ -7,11 +7,12 @@ public class TaschenrechnerHilfe {
         Scanner scanner = new Scanner(System.in);
 
         // Definiere Basisoperationen
-        String[] basisoperationen = new String[4];
+        String[] basisoperationen = new String[5];
         basisoperationen[0] = "+";
         basisoperationen[1] = "-";
         basisoperationen[2] = "*";
         basisoperationen[3] = "/";
+        basisoperationen[4] = "^";
 
         System.out.println("Bitte gib eine Zahl ein: ");
         double zahl1 = scanner.nextDouble();
@@ -19,7 +20,13 @@ public class TaschenrechnerHilfe {
         System.out.println("Deine Zahl als int ist: " + alsInt(zahl1));
 
         System.out.println("Bitte gib eine zweite Zahl ein: ");
-        double zahl2 = scanner.nextDouble();
+        double zahl2;
+        String input = scanner.next();
+        if (input.equals("")) {
+            zahl2 = Math.random() * 100 + 1;
+        } else{
+            zahl2 = Double.parseDouble(input);
+        }
 
         System.out.println("Bitte gib eine Rechenoperation ein (+, -, *, /, ^, =: ");
         String operation = scanner.next();
@@ -63,6 +70,9 @@ public class TaschenrechnerHilfe {
                 break;
             case "/":
                 ergebnis = rechnung.getZahl1() / rechnung.getZahl2();
+                break;
+            case "^":
+                ergebnis = Math.pow(rechnung.getZahl1(), rechnung.getZahl2());
                 break;
             default:
                 ergebnis = 0;
