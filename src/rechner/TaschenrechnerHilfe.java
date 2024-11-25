@@ -45,7 +45,18 @@ public class TaschenrechnerHilfe {
 
         for (int i = 0; i < basisoperationen.length; i++) {
             if (operation.equals(basisoperationen[i])) {
-                System.out.println("Das Ergebnis der Berechnung ist: " + berechnen(rechnung));
+                // Prüfe auf Division durch 0
+                if (operation.equals("/") && zahl2 == 0){
+                    System.out.println("Du kannst nicht durch 0 dividieren!");
+                    return;
+                }
+
+                try {
+                    System.out.println("Das Ergebnis der Berechnung ist: " + berechnen(rechnung));
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Konnte die Berechnung nicht durchführen: Unbekannte Operation: " + operation);
+                    return;
+                }
                 habeBerechnet = true;
             }
         }
@@ -55,7 +66,7 @@ public class TaschenrechnerHilfe {
         }
     }
 
-    public static double berechnen(Rechnung rechnung) {
+    public static double berechnen(Rechnung rechnung) throws IllegalArgumentException {
         double ergebnis;
 
         switch (rechnung.getOperation()) {
@@ -75,8 +86,7 @@ public class TaschenrechnerHilfe {
                 ergebnis = Math.pow(rechnung.getZahl1(), rechnung.getZahl2());
                 break;
             default:
-                ergebnis = 0;
-                break;
+                throw new IllegalArgumentException();
         }
 
         return ergebnis;
