@@ -2,6 +2,8 @@
 
 In diesem Repository findest du die Übungsaufgaben zur Klausur Rechnerprogrammierung der Seminargruppe CS24-1.
 
+Die Aufgaben und Lösungen wurden erstellt von Lucas Hummitzsch ([ItsNameless](https://github.com/TheItsNameless)).
+
 ## Aufgaben
 
 Die Aufgaben sind in [dieser Datei](Aufgaben.md) zu finden.
